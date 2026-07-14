@@ -16,58 +16,48 @@ window.addEventListener("load", () => {
 
 
 // ==============================
-// SCROLL PROGRESS BAR
-// ==============================
-
-window.addEventListener("scroll", () => {
-
-  const scrollTop = document.documentElement.scrollTop;
-
-  const scrollHeight =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-
-  const progress = (scrollTop / scrollHeight) * 100;
-
-  const bar = document.getElementById("progress-bar");
-
-  if (bar) {
-      bar.style.width = progress + "%";
-  }
-
-});
-
-
-// ==============================
-// BACK TO TOP BUTTON
+// CIRCULAR SCROLL PROGRESS & BACK TO TOP
 // ==============================
 
 const topBtn = document.getElementById("topBtn");
+const progressPath = document.querySelector("#topBtn .progress-path");
+
+if (progressPath) {
+  const pathLength = progressPath.getTotalLength();
+  
+  progressPath.style.transition = progressPath.style.WebkitTransition = "none";
+  progressPath.style.strokeDasharray = pathLength + " " + pathLength;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = "stroke-dashoffset 10ms linear";
+  
+  const updateProgress = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = scrollTop / scrollHeight;
+    const offset = pathLength - (progress * pathLength);
+    progressPath.style.strokeDashoffset = offset;
+  };
+  
+  updateProgress();
+  window.addEventListener("scroll", updateProgress);
+}
 
 window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 400) {
-
-      topBtn.style.display = "block";
-
-  } else {
-
-      topBtn.style.display = "none";
-
+  if (topBtn) {
+    if (window.scrollY > 400) {
+      topBtn.classList.add("active-progress");
+    } else {
+      topBtn.classList.remove("active-progress");
+    }
   }
-
 });
 
 topBtn?.addEventListener("click", () => {
-
   window.scrollTo({
-
-      top: 0,
-
-      behavior: "smooth"
-
+    top: 0,
+    behavior: "smooth"
   });
-
 });
 
 
@@ -193,40 +183,33 @@ reveals.forEach(section => {
 // ==============================
 
 const sections = document.querySelectorAll("section");
-
 const navLinks = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-
-      const top = section.offsetTop - 120;
-
-      const height = section.offsetHeight;
-
-      if (pageYOffset >= top && pageYOffset < top + height) {
-
-          current = section.getAttribute("id");
-
-      }
-
-  });
-
-  navLinks.forEach(link => {
-
-      link.classList.remove("active");
-
-      if (link.getAttribute("href") === "#" + current) {
-
-          link.classList.add("active");
-
-      }
-
-  });
-
+const hasHashLinks = Array.from(navLinks).some(link => {
+  const href = link.getAttribute("href");
+  return href && href.startsWith("#");
 });
+
+if (hasHashLinks) {
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      const height = section.offsetHeight;
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+}
 
 
 // ==============================
