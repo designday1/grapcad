@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="images/favicon.png">
 
 <title>Contact Us | GRAPCAD</title>
 
@@ -27,35 +28,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <header class="header">
 
-<nav class="navbar">
+    <div class="container nav-container">
 
-<a href="index.html" class="logo">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="GRAPCAD Logo">
+        </a>
 
-GRAP<span>CAD</span>
+        <nav>
 
-</a>
+            <ul class="nav-links">
 
-<ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
 
-<li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
 
-<li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
 
-<li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
 
-<li><a href="work.html">Work</a></li>
+                <li><a href="blog.html">Blog</a></li>
 
-<li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
 
-</ul>
+            </ul>
 
-<a href="#" class="primary-btn">
+        </nav>
 
-Enroll Now
+        <a href="contact.html" class="nav-btn">
+            Enroll Now
+        </a>
 
-</a>
-
-</nav>
+    </div>
 
 </header>
 
@@ -93,7 +96,7 @@ We're here to help you start your learning journey.
 
 <strong>Address:</strong><br>
 
-Your Institute Address<br>
+GRAPCAD Institute<br>
 
 Tirupur, Tamil Nadu
 
@@ -105,7 +108,7 @@ Tirupur, Tamil Nadu
 
 <strong>Phone:</strong><br>
 
-+91 XXXXX XXXXX
++91 81482 27403
 
 </p>
 
@@ -137,55 +140,61 @@ Monday - Saturday<br>
 
 <h2>Send Us a Message</h2>
 
-<form>
+<form
+    action="https://script.google.com/macros/s/AKfycbzFoF3IHATONH8LBt6lUO1J2F6C-p0huWiokPfB-b7rVX4iJcWDEzcZSNH7IVphZMGX/exec"
+    method="POST">
 
-<input
-type="text"
-placeholder="Your Name"
-required>
+    <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required>
 
-<input
-type="email"
-placeholder="Your Email"
-required>
+    <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required>
 
-<input
-type="tel"
-placeholder="Phone Number"
-required>
+    <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        required>
 
-<select required>
+    <select name="course" required>
 
-<option value="">Select Course</option>
+        <option value="">Select Course</option>
 
-<option>Graphic Design</option>
+        <option value="Graphic Design">Graphic Design</option>
 
-<option>UI/UX Design</option>
+        <option value="UI/UX Design">UI/UX Design</option>
 
-<option>Web Design</option>
+        <option value="Web Design">Web Design</option>
 
-<option>Civil CAD</option>
+        <option value="Civil CAD">Civil CAD</option>
 
-<option>Mechanical CAD</option>
+        <option value="Mechanical CAD">Mechanical CAD</option>
 
-<option>Interior Design</option>
+        <option value="Interior Design">Interior Design</option>
 
-<option>Pattern CAD</option>
+        <option value="Pattern CAD">Pattern CAD</option>
 
-</select>
+    </select>
 
-<textarea
-rows="6"
-placeholder="Your Message"
-required></textarea>
+    <textarea
+        name="message"
+        rows="6"
+        placeholder="Your Message"
+        required></textarea>
 
-<button
-type="submit"
-class="primary-btn">
+    <button
+        type="submit"
+        class="primary-btn">
 
-Send Message
+        Send Message
 
-</button>
+    </button>
 
 </form>
 
@@ -215,11 +224,13 @@ Send Message
       </div>
 
       <iframe
-          src="https://www.google.com/maps?q=Tirupur,Tamil%20Nadu&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4220.9009152028575!2d77.33868819999999!3d11.1105064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba907cd3ace2799%3A0xf047a694b67c90e1!2sGrap%20cad%20tirupur!5e1!3m2!1sen!2sin!4v1783943161262!5m2!1sen!2sin"
           width="100%"
           height="450"
           style="border:0; border-radius:20px;"
-          loading="lazy">
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
       </iframe>
 
   </div>
@@ -341,7 +352,9 @@ Send Message
 
       <div>
 
-          <h2>GRAP<span>CAD</span></h2>
+          <a href="index.html" class="logo" style="margin-bottom: 20px;">
+              <img src="images/logo.png" alt="GRAPCAD Logo">
+          </a>
 
           <p>
 
@@ -364,6 +377,8 @@ Send Message
               <li><a href="about.html">About</a></li>
 
               <li><a href="work.html">Work</a></li>
+
+              <li><a href="blog.html">Blog</a></li>
 
               <li><a href="contact.html">Contact</a></li>
 
@@ -412,6 +427,19 @@ Send Message
   </div>
 
 </footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/918148227403" class="whatsapp" target="_blank">
+  💬
+</a>
+
+<!-- Back To Top with Circular Progress -->
+<div id="topBtn" class="progress-wrap">
+  <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path class="bg-circle" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    <path class="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+  </svg>
+</div>
 
 <script src="js/script.js"></script>
 
